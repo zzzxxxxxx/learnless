@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+//变量
+@test_width: 100px;
+@test_height: 100px;
+@bg_color: pink;
+.box1 {
+  width: @test_width;
+  height: @test_height;
+  background: @bg_color;
+}
+
+
+
+//混合
+.border {
+  border: 10px solid red;
+}
+.box2 {
+  .box1;
+  .border;
+  margin-left: 100px;
+}
+//混合 --可带参数
+.border_02 (@width) {
+  border: @width solid yellow;
+}
+//参数的默认值
+.borderRadius (@radius: 5px) {
+  border-radius: @radius;
+}
+.box3 {
+  .box1;
+  .border_02(50px);
+  .borderRadius;
+}
+/*混合的例子*/
+.border_radius (@radius:5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.radius_test {
+  width: 100px;
+  height: 100px;
+  background: @bg_color;
+  .border_radius(50%);
+}
+
+//匹配模式
+/*匹配模式例子*/
+.position (r,@top: 100px, @left: 100px) {
+  position: relative;
+  top: @top;
+  left: @left;
+}
+.position (a,@top: 100px, @left: 100px) {
+  position: relative;
+  top: @top;
+  left: @left;
+}
+.position (f,@top: 100px, @left: 100px) {
+  position: flxed;
+  top: @top;
+  left: @left;
+}
+.position (@_,@top: 100px, @left: 100px) {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+.position_test {
+  .position(r);
+}
+
+// 运算
+@_test: 300px;
+.box4 {
+  width: @_test + 20;
+}
+.box5 {
+  width: @_test - 20; //运算符减号两侧 需要加空格
+}
+.box6 {
+  width: @_test * (20-15);
+}
+.box7 {
+  width: @_test / 20;
+}
+
+
+// 嵌套
+/*嵌套*/
+//注意： 嵌套层数越多，css加载的次数就越多
+.list {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  li {
+    overflow: hidden;
+    padding: 0 10px;
+    line-height: 50px;
+  }
+  a {
+    color: skyblue;
+    float: left;
+    // & 代表上一层选择器
+    &:hover {
+      color: red;
+    }
+  }
+  span {
+    color: #ccc;
+    float: right;
+  }
+}
+
+// @arguments变量
+.border_arg (@w: 30px, @c: yellow, @xx: solid) {
+  border: @arguments;
+}
+.border_test {
+  .border_arg(50px, red, dashed);
+}
+
+// 避免编译
+.test_03 {
+  width: ~"calc(300px-30px)";
+}
+
+// !important
+.test_important {
+  .border_radius() !important;
+}

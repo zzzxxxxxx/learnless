@@ -1,0 +1,86 @@
+@charset "utf-8";
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: #ffc0cb;
+}
+.border {
+  border: 10px solid red;
+}
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: #ffc0cb;
+  border: 10px solid red;
+  margin-left: 100px;
+}
+.box3 {
+  width: 100px;
+  height: 100px;
+  background: #ffc0cb;
+  border: 50px solid #ffff00;
+  border-radius: 5px;
+}
+/*混合的例子*/
+.radius_test {
+  width: 100px;
+  height: 100px;
+  background: #ffc0cb;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+/*匹配模式例子*/
+.position_test {
+  position: relative;
+  top: 100px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+.box4 {
+  width: 320px;
+}
+.box5 {
+  width: 280px;
+}
+.box6 {
+  width: 1500px;
+}
+.box7 {
+  width: 15px;
+}
+/*嵌套*/
+.list {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+.list li {
+  overflow: hidden;
+  padding: 0 10px;
+  line-height: 50px;
+}
+.list a {
+  color: skyblue;
+  float: left;
+}
+.list a:hover {
+  color: red;
+}
+.list span {
+  color: #ccc;
+  float: right;
+}
+.border_test {
+  border: 50px #ff0000 dashed;
+}
+.test_03 {
+  width: calc(300px-30px);
+}
+.test_important {
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+}
